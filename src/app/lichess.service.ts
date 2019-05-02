@@ -59,16 +59,16 @@ export class LichessService {
 
     if (winK) {
       return {
-        winnerName: 'Aurélien Hervé',
-        looserName: 'Alexandre Hervé',
+        winnerName: 'Aurélien',
+        looserName: 'Alexandre',
         winnerScore: aherve.perfs[winK]['rating'],
         looserScore: demission.perfs[winK]['rating'],
         gameType: winK,
       }
     } else {
       return {
-        winnerName: 'Alexandre Hervé',
-        looserName: 'Aurélien Hervé',
+        winnerName: 'Alexandre',
+        looserName: 'Aurélien',
         winnerScore: demission.perfs['blitz']['rating'],
         looserScore: aherve.perfs['blitz']['rating'],
         gameType: 'blitz',
@@ -77,8 +77,6 @@ export class LichessService {
   }
 
   private isWinning(u1: LichessUser, u2: LichessUser, key: 'blitz' | 'classical' | 'rapid') {
-    console.log('u1 perf', key, u1.perfs[key].rating, u2.perfs[key].rating)
-    console.log('returning', u1.perfs[key].rating > u2.perfs[key].rating)
     return u1.perfs[key].rating > u2.perfs[key].rating
   }
 

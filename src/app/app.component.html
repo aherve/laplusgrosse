@@ -1,7 +1,5 @@
 <h1> {{ today }}</h1>
-<div *ngIf="!(winnerName$ | async)">
-  <img src="/assets/loading.gif">
-</div>
+<mat-spinner *ngIf="!(winnerName$ | async)"></mat-spinner>
 
 <div *ngIf="!!(winnerName$ | async)">
   <p>

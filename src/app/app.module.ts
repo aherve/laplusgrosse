@@ -5,17 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LichessService } from './lichess.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 moment.locale('fr');
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [LichessService],
+  providers: [
+    LichessService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
