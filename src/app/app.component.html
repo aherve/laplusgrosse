@@ -1,0 +1,14 @@
+<h1> {{ today }}</h1>
+<div *ngIf="!(winnerName$ | async)">
+  <img src="/assets/loading.gif">
+</div>
+
+<div *ngIf="!!(winnerName$ | async)">
+  <p>
+    Celui qui a la plus grosse est <strong>{{ winnerName$ | async }}</strong>, avec un impressionnant score de <strong>{{winnerScore$ | async }}</strong> en {{ gameType$ | async }}.
+  </p>
+
+  <p>
+    Son pauvre frère {{ looserName$ | async }} n'atteint que difficilement le score de {{ looserScore$ | async }}, ce qui le place {{ diff$ | async }} points derrière.
+  </p>
+</div>

@@ -1,10 +1,33 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment'
+import { LichessService } from './lichess.service';
+import { map, shareReplay } from 'rxjs/operators'
 
 @Component({
   selector: 'ah-root',
-  template: `<h1> hello, world !</h1> `,
+  templateUrl: './app.component.html',
   styles: []
 })
 export class AppComponent {
-  title = 'laplusgrosse';
+
+
+  public constructor (
+    private lichessService: LichessService,
+  ) { }
+
+  public board$ = this.lichessService.getBoard().pipe(
+    shareReplay()
+  )
+
+  public today = moment().format('LL')
+
+  public gameType$ = this.board$.pipe(map(b => b.gameType))
+
+  public winnerName$ = this.board$.pipe(map(b => b.winnerName))
+  public winnerScore$ = this.board$.pipe(map(b => b.winnerScore))
+
+  public looserName$ = this.board$.pipe(map(b => b.looserName))
+  public looserScore$ = this.board$.pipe(map(b => b.looserScore))
+  public diff$ = this.board$.pipe(map(b => b.winnerScore - b.looserScore))
+
 }
