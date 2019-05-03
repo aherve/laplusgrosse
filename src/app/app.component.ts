@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment'
 import { LichessService } from './lichess.service';
 import { map, shareReplay } from 'rxjs/operators'
 
@@ -19,7 +18,7 @@ export class AppComponent {
     shareReplay()
   )
 
-  public today = moment().format('LL')
+  public today = new Date()
 
   public gameType$ = this.board$.pipe(map(b => b.gameType))
 

@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import * as moment from 'moment';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { LichessService } from './lichess.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-moment.locale('fr');
 import { MatProgressSpinnerModule } from '@angular/material';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+
+registerLocaleData(fr);
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material';
     MatProgressSpinnerModule,
   ],
   providers: [
-    LichessService
+    LichessService,
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
   ],
   bootstrap: [AppComponent]
 })
